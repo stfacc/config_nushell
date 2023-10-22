@@ -577,6 +577,16 @@ $env.config = {
             mode: emacs
             event: {edit: capitalizechar}
         }
+        {
+            name: insert_last_arg_from_prev_cmd
+            modifier: alt
+            keycode: char_.
+            mode: [emacs, vi_normal, vi_insert]
+            event: {
+                send: executeHostCommand
+                cmd: "commandline --insert (history | last | get command | parse --regex '(?P<arg>[^ ]+)$' | get arg | first)"
+            }
+        }
     ]
 }
 
