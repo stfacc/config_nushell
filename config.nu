@@ -7,6 +7,13 @@ let carapace_completer = {|spans|
 $env.config = {
     show_banner: false
 
+    explore: {
+        command_bar_text: {fg: $theme_color0},
+        table: {
+            selected_cell: {fg: white, bg: light_blue},
+        },
+    }
+
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
         sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file

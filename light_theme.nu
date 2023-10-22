@@ -1,3 +1,4 @@
+let theme_color0 = "#333333"
 let theme_color1 = "#005f87"  # dark blue
 let theme_color2 = "#da2376"  # magenta: arguments, strings
 let theme_color3 = "#8d68b9"  # purple: variable, int, float, bool
@@ -11,7 +12,7 @@ let theme_color4_bold_ansi = "1;38;2;183;43;39m"
 let theme_color5_ansi = "0;38;2;219;116;26m"
 
 let light_theme = {
-    separator: dark_gray
+    separator: $theme_color0
     leading_trailing_space_bg: { attr: n }
     header: { fg: $theme_color1 attr: b }
     row_index: { fg: $theme_color1 attr: b }
@@ -20,7 +21,7 @@ let light_theme = {
     int: $theme_color3
     float: $theme_color3
     filesize: { fg: $theme_color7 attr: b }
-    duration: dark_gray
+    duration: $theme_color0
     date: {|| (date now) - $in |
         if $in < 1hr {
             { fg: $theme_color4 attr: "b" }
@@ -31,20 +32,20 @@ let light_theme = {
         } else if $in < 4wk {
             $theme_color6
         } else if $in < 52wk {
-            "dark_gray"
+            "$theme_color0"
         } else {
             "gray"
         }
     }
     range: $theme_color5
-    string: dark_gray
+    string: $theme_color0
     nothing: green_bold
-    binary: dark_gray
-    cellpath: dark_gray
-    record: dark_gray
-    list: dark_gray
-    block: dark_gray
-    hints: dark_gray
+    binary: $theme_color0
+    cellpath: $theme_color0
+    record: $theme_color0
+    list: $theme_color0
+    block: $theme_color0
+    hints: $theme_color0
     search_result: { fg: white bg: red }
     shape_block: { fg: $theme_color1 attr: b }
     shape_closure: { fg: $theme_color4 attr: b }
