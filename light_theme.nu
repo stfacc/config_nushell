@@ -37,7 +37,7 @@ let light_theme = {
         }
     }
     range: $theme_color5
-    string: black
+    string: dark_gray
     nothing: green_bold
     binary: dark_gray
     cellpath: dark_gray
