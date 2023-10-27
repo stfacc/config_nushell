@@ -1,5 +1,6 @@
-let theme_color1_bold = "1;38;2;0;95;135m"
-let theme_color4 = "0;38;2;183;43;39m"
+let theme_color1_bold_ansi = "1;38;2;0;95;135m"
+let theme_color4_ansi = "0;38;2;183;43;39m"
+let theme_color5_ansi = "0;38;2;219;116;26m"
 
 def create_left_prompt [] {
     let dir = ([
@@ -7,7 +8,7 @@ def create_left_prompt [] {
         ($env.PWD | str substring ($env.HOME | str length)..)
     ] | str join)
 
-    let path_color = (if (is-admin) { ansi red_bold } else { ansi -e $theme_color1_bold })
+    let path_color = (if (is-admin) { ansi red_bold } else { ansi -e $theme_color1_bold_ansi })
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi dark_gray })
     let path_segment = $"($path_color)($dir)" | str replace --all (char path_sep) $"($separator_color)/($path_color)"
 
@@ -19,22 +20,26 @@ def create_left_prompt [] {
 }
 
 def create_right_prompt [] {
+    let cmd_duration_segment = [
+        (ansi -e $theme_color5_ansi)
+        ($"($env.CMD_DURATION_MS)ms" | into duration | into string)
+    ] | str join
     let time_segment = ([
         (ansi reset)
-        (ansi -e $theme_color4)
+        (ansi -e $theme_color4_ansi)
         (date now | format date '%R')
     ] | str join)
 
-    $time_segment
+    [$cmd_duration_segment $time_segment] | str join ' '
 }
 
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 
-$env.PROMPT_INDICATOR = {|| $"(ansi -e $theme_color4)❯ " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| $"(ansi -e $theme_color4): " }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| $"(ansi -e $theme_color4)> " }
-$env.PROMPT_MULTILINE_INDICATOR = {|| $"(ansi -e $theme_color4)::: " }
+$env.PROMPT_INDICATOR = {|| $"(ansi -e $theme_color4_ansi)❯ " }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| $"(ansi -e $theme_color4_ansi): " }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| $"(ansi -e $theme_color4_ansi)❯ " }
+$env.PROMPT_MULTILINE_INDICATOR = {|| $"(ansi -e $theme_color4_ansi)::: " }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)

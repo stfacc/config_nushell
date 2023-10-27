@@ -58,10 +58,7 @@ $env.config = {
 
     hooks: {
         pre_prompt: [{ null }]
-        pre_execution: [{
-            let col = ((term size).columns) - 4 - 6
-            print $"(ansi -e $theme_color5_ansi)(ansi -e '1A')(ansi -e $"($col)G")(date now | format date %R)(ansi reset)"
-        }]
+        pre_execution: [{null}]
         env_change: {
             PWD: [{|before, after| null }]
         }
