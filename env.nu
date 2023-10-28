@@ -1,6 +1,6 @@
 let theme_color1_bold_ansi = "1;38;2;0;95;135m"
 let theme_color4_ansi = "0;38;2;183;43;39m"
-let theme_color5_ansi = "0;38;2;219;116;26m"
+let theme_color4_bold_ansi = "1;38;2;183;43;39m"
 
 def create_left_prompt [] {
     let dir = ([
@@ -13,32 +13,18 @@ def create_left_prompt [] {
     let path_segment = $"($path_color)($dir)" | str replace --all (char path_sep) $"($separator_color)/($path_color)"
 
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {
-        $" (ansi red_bold)($env.LAST_EXIT_CODE)(ansi reset) "
+        $" (ansi -e $theme_color4_bold_ansi)($env.LAST_EXIT_CODE)(ansi reset) "
     } else { "" }
 
     [$path_segment $last_exit_code] | str join
 }
 
-def create_right_prompt [] {
-    let cmd_duration_segment = [
-        (ansi -e $theme_color5_ansi)
-        ($"($env.CMD_DURATION_MS)ms" | into duration | into string)
-    ] | str join
-    let time_segment = ([
-        (ansi reset)
-        (ansi -e $theme_color4_ansi)
-        (date now | format date '%R')
-    ] | str join)
-
-    [$cmd_duration_segment $time_segment] | str join ' '
-}
-
 $env.PROMPT_COMMAND = {|| create_left_prompt }
-$env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
+$env.PROMPT_COMMAND_RIGHT = { null }
 
 $env.PROMPT_INDICATOR = {|| $"(ansi -e $theme_color4_ansi)❯ " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| $"(ansi -e $theme_color4_ansi): " }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| $"(ansi -e $theme_color4_ansi)❯ " }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| $"(ansi -e $theme_color4_ansi)❯ " }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| $"(ansi -e $theme_color4_ansi): " }
 $env.PROMPT_MULTILINE_INDICATOR = {|| $"(ansi -e $theme_color4_ansi)::: " }
 
 # Specifies how environment variables are:
