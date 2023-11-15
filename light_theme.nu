@@ -17,9 +17,9 @@ let light_theme = {
     header: { fg: $theme_color1 attr: b }
     row_index: { fg: $theme_color1 attr: b }
     empty: blue
-    bool: $theme_color3
-    int: $theme_color3
-    float: $theme_color3
+    bool: { fg: $theme_color5 attr: i }
+    int: $theme_color5
+    float: $theme_color5
     filesize: { fg: $theme_color7 attr: b }
     duration: $theme_color0
     date: {|| (date now) - $in |
@@ -50,30 +50,31 @@ let light_theme = {
     shape_block: { fg: $theme_color1 attr: b }
     shape_closure: { fg: $theme_color4 attr: b }
     shape_custom: green_bold
-    shape_datetime: cyan_bold
+    shape_datetime: $theme_color6
     shape_directory: $theme_color2
     shape_internalcall: { fg: $theme_color1 attr: b }
+    shape_keyword: { fg: $theme_color1 attr: b }
     shape_external: $theme_color1
     shape_externalarg: $theme_color2
     shape_filepath: $theme_color2
     shape_flag: { fg: $theme_color7 attr: b }
     shape_garbage: { fg: "#ffffff" bg: red attr: b}
     shape_globpattern: cyan_bold
-    shape_int: { fg: $theme_color3 attr: b }
-    shape_float: { fg: $theme_color3 attr: b }
-    shape_bool: { fg: $theme_color3 attr: b }
+    shape_int: { fg: $theme_color5 }
+    shape_float: { fg: $theme_color5 }
+    shape_bool: { fg: $theme_color5 attr: i }
     shape_list: $theme_color1
     shape_table: { fg: $theme_color1 attr: b }
     shape_record: $theme_color1
     shape_literal: green_bold
     shape_match_pattern: green_bold
     shape_matching_brackets: { attr: u }
-    shape_nothing: green_bold
+    shape_nothing: { fg: $theme_color5 attr: i }
     shape_operator: { fg: $theme_color5 attr: b }
     shape_or: { fg: $theme_color5 attr: b }
     shape_and: { fg: $theme_color5 attr: b }
     shape_binary: { fg: $theme_color5 attr: b }
-    shape_pipe: { fg: $theme_color5 attr: b }
+    shape_pipe: { fg: $theme_color1 attr: b }
     shape_range: { fg: $theme_color5 attr: b }
     shape_redirection: { fg: $theme_color6 attr: b }
     shape_signature: { fg: $theme_color3 attr: b }
