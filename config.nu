@@ -587,13 +587,4 @@ $env.config = {
     ]
 }
 
-alias l = ls
-alias la = ls -a
-alias ll = ls -l
-alias lla = ls -la
-def lg [] { ls | grid -c }
-def ox [f] { open $f | explore }
-
-alias gd = git diff
-alias gl = git log
-alias glp = git log -p
+source ($nu.default-config-dir | path join "aliases.nu")
