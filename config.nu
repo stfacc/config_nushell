@@ -581,7 +581,7 @@ $env.config = {
             mode: [emacs, vi_normal, vi_insert]
             event: {
                 send: executeHostCommand
-                cmd: "commandline --insert (history | last | get command | parse --regex '(?P<arg>[^ ]+)$' | get arg | first)"
+                cmd: "commandline --insert (history | last | get command | str trim | parse --regex '(?P<arg>[^ ]+)$' | get arg | first)"
             }
         }
     ]
