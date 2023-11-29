@@ -588,4 +588,5 @@ $env.config = {
 }
 
 source ($nu.default-config-dir | path join "aliases.nu")
+source ($nu.default-config-dir | path join "oh-my-posh.nu")
 source ($nu.default-config-dir | path join "config-local.nu")
