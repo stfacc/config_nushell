@@ -55,6 +55,7 @@ $env.config = {
     edit_mode: vi # emacs, vi
     shell_integration: false # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
+    highlight_resolved_externals: true
 
     hooks: {
         pre_prompt: [{ null }]

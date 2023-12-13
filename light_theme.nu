@@ -54,7 +54,8 @@ let light_theme = {
     shape_directory: $theme_color2
     shape_internalcall: { fg: $theme_color1 attr: b }
     shape_keyword: { fg: $theme_color1 attr: b }
-    shape_external: $theme_color1
+    shape_external: $theme_color2
+    shape_external_resolved: $theme_color7
     shape_externalarg: $theme_color2
     shape_filepath: $theme_color2
     shape_flag: { fg: $theme_color7 attr: b }
